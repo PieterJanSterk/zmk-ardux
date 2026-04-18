@@ -168,6 +168,28 @@
                 , <&macro_release &kp LALT>
                 ;
         };
+        semi_macro: semi_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp KP_N0 &kp KP_N5 &kp KP_N9>
+                , <&macro_release &kp LALT>
+                ;
+        };
+        bslh_macro: bslh_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp KP_N0 &kp KP_N9 &kp KP_N2>
+                , <&macro_release &kp LALT>
+                ;
+        };
     };
 };
 
@@ -288,9 +310,9 @@
             display-name = "Symbol";
             bindings = <
                 LEADING_NONES
-                &kp RA(BSLH)  &kp DOT   &kp RA(NUBS)  &kp N8
+                &kp RA(BSLH)  &bslh_macro  &semi_macro  &kp N8
                 MIDDLE_NONES
-                &eq_macro     &kp EQUAL &kp LS(COMMA) &mo LAYER_ID_SYMBOLS
+                &eq_macro     &kp EQUAL    &kp LS(COMMA) &mo LAYER_ID_SYMBOLS
                 TRAILING_NONES
             >;
         };
@@ -299,9 +321,9 @@
             display-name = "Paren";
             bindings = <
                 LEADING_NONES
-                &kp RA(N4)  &kp N5        &kp MINUS  &mo LAYER_ID_PARENTHETICALS
+                &kp RA(N4)  &kp MINUS     &kp N5        &mo LAYER_ID_PARENTHETICALS
                 MIDDLE_NONES
-                &kp RA(N0)  &kp RA(N5)    &kp RA(RBKT)  &none
+                &kp RA(N0)  &kp RA(RBKT)  &kp RA(N5)    &none
                 TRAILING_NONES
             >;
         };
