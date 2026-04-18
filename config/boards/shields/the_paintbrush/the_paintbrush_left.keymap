@@ -3,180 +3,37 @@
  *
  * SPDX-License-Identifier: MIT
  *
- * Belgian AZERTY remix for the Paintbrush Left
- * Based on arduxio/zmk-ardux
- *
- * =================================================================
- * HOW THIS WORKS
- * =================================================================
- * The ardux.dtsi file defines all layers and combos using
- * ARDUX_BASE_* defines wrapped in #if !defined guards.
- * We define our overrides HERE, before including ardux.dtsi,
- * so our values win.
- *
- * Belgian AZERTY corrections applied:
- *
- *  Base letters:
- *    ARDUX_BASE_A  = Q   (AZERTY Q key → a)
- *    ARDUX_BASE_Q  = A   (AZERTY A key → q)
- *    ARDUX_BASE_W  = Z   (AZERTY Z key → w)  [combo]
- *    ARDUX_BASE_Z  = W   (AZERTY W key → z)  [combo]
- *    ARDUX_BASE_M  = SEMI (AZERTY ; key → m) [combo]
- *
- *  Numbers (Belgian needs Shift+number for digits):
- *    ARDUX_NUMBER_1 = LS(N1) ... ARDUX_NUMBER_0 = LS(N0)
- *    ARDUX_NUMBER_7 = LS(N7) ... ARDUX_NUMBER_0 = LS(N0)
- *
- *  Symbols (E-hold layer) — Belgian corrections:
- *    Backtick  ` = RA(BSLH)
- *    Semicolon ; = DOT        (Belgian DOT unshifted = ;)
- *    Backslash \ = RA(NUBS)   (Belgian AltGr+<> = \)
- *    Exclaim   ! = N8         (Belgian N8 unshifted = !)
- *    Minus     - = EQUAL      (Belgian EQUAL unshifted = -)
- *    Equals    = = macro      (Windows Alt+061 numpad trick)
- *    Question  ? = LS(COMMA)  (Belgian LS(,) = ?)
- *
- *  Parentheticals (A-hold layer) — Belgian corrections:
- *    (  = N5        (Belgian N5 unshifted = ()
- *    )  = MINUS     (Belgian MINUS unshifted = ))
- *    [  = RA(N5)    (Belgian AltGr+5 = [)
- *    ]  = RA(RBKT)  (Belgian AltGr+] key = ])
- *    {  = RA(N4)    (Belgian AltGr+4 = {)
- *    }  = RA(N0)    (Belgian AltGr+0 = })
- * =================================================================
+ * Belgian AZERTY keymap for the Paintbrush Left
+ * Uses patched ardux.dtsi in the same folder
  */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
 
-// Left hand
 #define ARDUX_LEFT 1
 
-// Key positions — Paintbrush Left
-// ARTS Row (top, right to left on left hand)
+// Key positions — Paintbrush Left (mirrored)
+// ARTS Row
 #define KEY_A 3
 #define KEY_R 2
 #define KEY_T 1
 #define KEY_S 0
-// EYIO Row (bottom, right to left on left hand)
+// EYIO Row
 #define KEY_E 7
 #define KEY_Y 6
 #define KEY_I 5
 #define KEY_O 4
 
-// Offsets (no extra keys on this board)
+// No extra padding keys on the Paintbrush
 #define LEADING_NONES  NONE(0,0,0)
 #define MIDDLE_NONES   NONE(0,0,0)
 #define TRAILING_NONES NONE(0,0,0)
 
-// =================================================================
-// BELGIAN AZERTY BASE LETTER OVERRIDES
-// =================================================================
-
-// Tapping the A key: send Q so AZERTY produces 'a'
+// Belgian AZERTY: to type 'a' we must send Q
+// (AZERTY OS maps the Q key position to the letter a)
+// All other AZERTY fixes are inside the patched ardux.dtsi
 #define ARDUX_BASE_A Q
 
-// Q combo (ATS): send A so AZERTY produces 'q'
-#define ARDUX_BASE_Q A
-
-// W combo (AS):  send Z so AZERTY produces 'w'
-#define ARDUX_BASE_W Z
-
-// Z combo (ARTS): send W so AZERTY produces 'z'
-#define ARDUX_BASE_Z W
-
-// M combo (YIO): send SEMI so AZERTY produces 'm'
-#define ARDUX_BASE_M SEMI
-
-// =================================================================
-// BELGIAN AZERTY NUMBER LAYER OVERRIDES
-// Belgian AZERTY: digits are on Shift+number row keys
-// =================================================================
-#define ARDUX_NUMBER_1 LS(N1)
-#define ARDUX_NUMBER_2 LS(N2)
-#define ARDUX_NUMBER_3 LS(N3)
-#define ARDUX_NUMBER_4 LS(N4)
-#define ARDUX_NUMBER_5 LS(N5)
-#define ARDUX_NUMBER_6 LS(N6)
-#define ARDUX_NUMBER_7 LS(N7)
-#define ARDUX_NUMBER_8 LS(N8)
-#define ARDUX_NUMBER_9 LS(N9)
-#define ARDUX_NUMBER_0 LS(N0)
-
-// =================================================================
-// BELGIAN AZERTY SYMBOL LAYER OVERRIDES (E-hold layer)
-// =================================================================
-
-// Backtick ` : AltGr + µ£` key (HID BSLH)
-#define ARDUX_SYMBOL_BACKTICK RA(BSLH)
-
-// Semicolon ; : Belgian DOT key unshifted = ;
-#define ARDUX_SYMBOL_SEMI DOT
-
-// Backslash \ : AltGr + <> key (HID NUBS)
-#define ARDUX_SYMBOL_BSLH RA(NUBS)
-
-// Exclamation ! : Belgian N8 unshifted = !
-#define ARDUX_SYMBOL_EXCL N8
-
-// Minus - : Belgian EQUAL key unshifted = -
-#define ARDUX_SYMBOL_MINUS EQUAL
-
-// Question ? : Belgian LS(COMMA) = ?
-#define ARDUX_SYMBOL_QMARK LS(COMMA)
-
-// Tilde ~ : Belgian RA(EQUAL) = ~
-#define ARDUX_SYMBOL_TILDE RA(EQUAL)
-
-// Colon : : Belgian SLASH unshifted = :
-#define ARDUX_SYMBOL_COLON SLASH
-
-// Pipe | : Belgian RA(N1) = |
-#define ARDUX_SYMBOL_PIPE RA(N1)
-
-// Underscore _ : Belgian RA(MINUS) = _
-#define ARDUX_SYMBOL_UNDER RA(MINUS)
-
-// =================================================================
-// BELGIAN AZERTY PARENTHETICALS LAYER OVERRIDES (A-hold layer)
-// =================================================================
-#define ARDUX_PAREN_OPEN   N5        // Belgian N5 unshifted = (
-#define ARDUX_PAREN_CLOSE  MINUS     // Belgian MINUS unshifted = )
-#define ARDUX_BRACKET_OPEN RA(N5)    // Belgian AltGr+5 = [
-#define ARDUX_BRACKET_CLOSE RA(RBKT) // Belgian AltGr+] key = ]
-#define ARDUX_BRACE_OPEN   RA(N4)    // Belgian AltGr+4 = {
-#define ARDUX_BRACE_CLOSE  RA(N0)    // Belgian AltGr+0 = }
-
-// =================================================================
-// EQUALS SIGN MACRO
-// Belgian AZERTY has no direct HID keycode for =
-// We use a Windows Alt+numpad trick: hold Alt, type 061 on numpad
-// This produces = on Windows regardless of keyboard layout.
-// Bound to: hold E (symbols layer), then press the O key position
-// =================================================================
-/ {
-    macros {
-        equals_macro: equals_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <10>;
-            tap-ms = <10>;
-            bindings
-                = <&macro_press &kp LALT>
-                , <&macro_tap &kp KP_N0 &kp KP_N6 &kp KP_N1>
-                , <&macro_release &kp LALT>
-                ;
-        };
-    };
-};
-
-// Override the equals position in the symbols layer to use our macro
-// In ardux.dtsi the symbol layer typically has an ARDUX_SYMBOL_EQUAL slot
-#define ARDUX_SYMBOL_EQUAL &equals_macro
-
-// =================================================================
-// Include the main ardux keymap — all overrides above take effect
-// =================================================================
-#include "../../../ardux.dtsi"
+// Include the patched ardux.dtsi from the same folder
+#include "ardux.dtsi"
