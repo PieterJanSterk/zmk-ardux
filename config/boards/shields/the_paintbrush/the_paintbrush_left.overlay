@@ -23,7 +23,7 @@
 		com-sequential;
 		inversion-on;
 		prechargep = <0x22>;
-		init-delay-ms = <128>;
+		ready-time-ms = <128>;
 	};
 };
 
