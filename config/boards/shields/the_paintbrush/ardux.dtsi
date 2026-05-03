@@ -301,7 +301,7 @@
                 LEADING_NONES
                 &mo LAYER_ID_NUMBERS  &kp LS(N3)  &kp LS(N2)  &kp LS(N1)
                 MIDDLE_NONES
-                &kp COMMA             &kp LS(N6)  &kp LS(N5)  &kp LS(N4)
+                &kp DOT               &kp LS(N6)  &kp LS(N5)  &kp LS(N4)
                 TRAILING_NONES
             >;
         };
