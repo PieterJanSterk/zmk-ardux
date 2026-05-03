@@ -48,3 +48,7 @@
             ;
 	};
 };
+
+&ext_power {
+	init-delay-ms = <50>;
+};
