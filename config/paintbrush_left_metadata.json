@@ -1,0 +1,18 @@
+{
+  "board": "",
+  "shield": "the_paintbrush_left",
+  "layouts": {
+    "default": {
+      "layout": [
+        {"label": "S", "x": 0, "y": 0},
+        {"label": "T", "x": 1, "y": 0},
+        {"label": "R", "x": 2, "y": 0},
+        {"label": "A", "x": 3, "y": 0},
+        {"label": "O", "x": 0, "y": 1},
+        {"label": "I", "x": 1, "y": 1},
+        {"label": "Y", "x": 2, "y": 1},
+        {"label": "E", "x": 3, "y": 1}
+      ]
+    }
+  }
+}
