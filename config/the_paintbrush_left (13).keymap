@@ -1,0 +1,39 @@
+/*
+ * Copyright (c) 2021 Mike "KemoNine" Crosson
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * Belgian AZERTY keymap for the Paintbrush Left
+ * Uses patched ardux.dtsi in the same folder
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define ARDUX_LEFT 1
+
+// Key positions — Paintbrush Left (mirrored)
+// ARTS Row
+#define KEY_A 3
+#define KEY_R 2
+#define KEY_T 1
+#define KEY_S 0
+// EYIO Row
+#define KEY_E 7
+#define KEY_Y 6
+#define KEY_I 5
+#define KEY_O 4
+
+// No extra padding keys on the Paintbrush
+#define LEADING_NONES  NONE(0,0,0)
+#define MIDDLE_NONES   NONE(0,0,0)
+#define TRAILING_NONES NONE(0,0,0)
+
+// Belgian AZERTY: to type 'a' we must send Q
+// (AZERTY OS maps the Q key position to the letter a)
+// All other AZERTY fixes are inside the patched ardux.dtsi
+#define ARDUX_BASE_A Q
+
+// Include the patched ardux.dtsi from the same folder
+#include "ardux.dtsi"
