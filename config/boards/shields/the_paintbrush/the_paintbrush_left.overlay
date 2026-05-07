@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2021 Mike "KemoNine" Crosson
  * SPDX-License-Identifier: MIT
+ *
+ * TEST VERSION - trying I2C address 0x3d instead of 0x3c
+ * Some SSD1306 modules use 0x3d depending on the SA0 pin
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
@@ -8,9 +11,9 @@
 &pro_micro_i2c {
 	status = "okay";
 
-	oled: ssd1306@3c {
+	oled: ssd1306@3d {
 		compatible = "solomon,ssd1306fb";
-		reg = <0x3c>;
+		reg = <0x3d>;
 		width = <128>;
 		height = <32>;
 		segment-offset = <0>;
