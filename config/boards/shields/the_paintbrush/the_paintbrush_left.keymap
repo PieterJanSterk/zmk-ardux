@@ -21,6 +21,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/ext_power.h>
 #include "keys_fr_belgian.h"
 
 #define ARDUX_LEFT 1
@@ -84,22 +85,14 @@
             display-name = "Symbol";
             /*
              * Hold E (bottom right), then press:
-             *   A → ;    R → !    T → ?    S → .
+             *   S → +    T → !    R → ?    A → .
              *   O → =    I → -    Y → _    E → (hold)
-             *
-             * Shifted versions (press Shift combo first):
-             *   A → Shift+! → (nothing useful)
-             *   R → : (colon)
-             *   T → | (pipe)
-             *   S → ~ (tilde)
-             *   I → _ (underscore)
-             *   O → + (plus)
              */
             bindings = <
                 LEADING_NONES
-                &kp FR_PLUS   &kp FR_EXCL  &kp FR_QMARK  &kp FR_DOT 
+                &kp FR_PLUS   &kp FR_EXCL  &kp FR_QMARK  &kp FR_DOT
                 MIDDLE_NONES
-                &eq_macro     &kp FR_MINUS &kp FR_UNDER &mo LAYER_ID_SYMBOLS
+                &eq_macro     &kp FR_MINUS &kp FR_UNDER  &mo LAYER_ID_SYMBOLS
                 TRAILING_NONES
             >;
         };
@@ -122,6 +115,10 @@
 
         navigation {
             display-name = "Nav";
+            /*
+             * Top row:    PgUp  Home  Up    End
+             * Bottom row: PgDn  Left  Down  Right
+             */
             bindings = <
                 LEADING_NONES
                 &kp PG_UP  &kp HOME  &kp UP    &kp END
@@ -133,6 +130,10 @@
 
         bt {
             display-name = "BT";
+            /*
+             * Top row:    BLE   BT2   BT1   BT0
+             * Bottom row: USB   BT5   BT4   BT3
+             */
             bindings = <
                 LEADING_NONES
                 &out OUT_BLE  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0
@@ -144,6 +145,10 @@
 
         mouse {
             display-name = "Mouse";
+            /*
+             * Top row:    Scroll Up   Right click  Mouse Up    Left click
+             * Bottom row: Scroll Down Mouse Left   Mouse Down  Mouse Right
+             */
             bindings = <
                 LEADING_NONES
                 &msc SCRL_UP    &mkp RCLK      &mmv MOVE_UP    &mkp LCLK
@@ -155,9 +160,20 @@
 
         custom {
             display-name = "Custom";
+            /*
+             * Hold O (bottom left), then press:
+             *   S → EP_TOG  ← toggles OLED power (test key — remove once screen works)
+             *   T → Volume Up
+             *   R → Play/Pause
+             *   A → Mute
+             *   O → (hold)
+             *   I → Volume Down
+             *   Y → Previous track
+             *   E → Next track
+             */
             bindings = <
                 LEADING_NONES
-                &none               &kp C_VOL_UP  &kp C_PP   &kp C_MUTE
+                &ext_power EP_TOG  &kp C_VOL_UP  &kp C_PP   &kp C_MUTE
                 MIDDLE_NONES
                 &mo LAYER_ID_CUSTOM &kp C_VOL_DN  &kp C_PREV &kp C_NEXT
                 TRAILING_NONES
