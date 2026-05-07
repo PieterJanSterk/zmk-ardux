@@ -84,8 +84,8 @@
             display-name = "Symbol";
             /*
              * Hold E (bottom right), then press:
-             *   A → !    R → ;    T → \    S → `
-             *   O → =    I → -    Y → ?    E → (hold)
+             *   A → ;    R → !    T → ?    S → .
+             *   O → =    I → -    Y → _    E → (hold)
              *
              * Shifted versions (press Shift combo first):
              *   A → Shift+! → (nothing useful)
@@ -97,9 +97,9 @@
              */
             bindings = <
                 LEADING_NONES
-                &kp FR_EXCL   &kp FR_SEMI  &kp FR_BSLH  &kp FR_GRAVE
+                &kp FR_PLUS   &kp FR_EXCL  &kp FR_QMARK  &kp FR_DOT 
                 MIDDLE_NONES
-                &eq_macro     &kp FR_MINUS &kp FR_QMARK &mo LAYER_ID_SYMBOLS
+                &eq_macro     &kp FR_MINUS &kp FR_UNDER &mo LAYER_ID_SYMBOLS
                 TRAILING_NONES
             >;
         };
